@@ -13,6 +13,7 @@ public class SimuladorEmprestimo {
 	
     // Switch Expressions.
     // Seria necessário a palava yield caso houve alguma lógica antes da produção do valor.
+    // Usando Switch Expressions, não é necessário utilizar a cláusula break.
     double taxaJuros = switch (quantidadeParcelas) {
 		case 1, 2 -> 1.99;
 		case 3 -> 2.99;
