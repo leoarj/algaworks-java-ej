@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/records-example-11.11.iml" filepath="$PROJECT_DIR$/records-example-11.11.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jvm-estrutura-memoria.iml" filepath="$PROJECT_DIR$/jvm-estrutura-memoria.iml" />
     </modules>
   </component>
 </project>
