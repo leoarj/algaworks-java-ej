@@ -16,7 +16,7 @@ public class GestorDeImpostos {
         /*
         * Pattern Matching para operador instanceof
         * A partir do Java 16 foi introduzido um recurso para facilitar o uso do operador instanceof,
-        * onde já é possível na mesma condição informar a variável onde vai ser injetada a referência do casting.
+        * onde já é possível na mesma condição informar a variável onde vai ser injetada a referência.
         *
         * Por exemplo, caso não for possível modificar as superclasses por algum motivo (código externo de
         * bibliotecas, regras de desenvolvimento da empresa etc) e não puder introduzir métodos que façam melhor uso do
