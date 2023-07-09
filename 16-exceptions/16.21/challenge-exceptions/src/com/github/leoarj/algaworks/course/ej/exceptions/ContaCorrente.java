@@ -89,7 +89,8 @@ public class ContaCorrente {
                 return true;
             }
         } catch (ContaCorrenteException e) {
-            // Boa prática: Passar a causa da exceção ao propar uma nova exceção
+            // Capturando outras exceções checadas, e lançando nova exceção.
+            // Boa prática: Passar a causa da exceção ao propagar uma nova exceção.
             throw new ContaCorrenteTransferirException("Não foi possível realizar a transferência", e);
         }
 
