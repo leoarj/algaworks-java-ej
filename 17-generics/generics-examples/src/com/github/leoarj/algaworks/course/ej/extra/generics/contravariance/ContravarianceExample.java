@@ -26,7 +26,7 @@ public class ContravarianceExample {
         dogs4Object.add(new Dog("Dog object"));
         animals4 = dogs4Object; // Permitido. Object na hierarquia é o mais alto supertipo.
         // Obs.: Usar com cuidado para não perder os benefícios de segurança de tipos em tempo de compilação/execução,
-        // porque com lowerbounded relaxamos a restrição de tipo para a estrutura de dados trabalhada.
+        // porque com lowerbounded ampliamos a restrição de tipo para a estrutura de dados trabalhada.
 
         return animals4;
         // return getListOfDogLowerbounded(); // Não pode ser retornado, porque Dog não é uma superclasse de Animal.

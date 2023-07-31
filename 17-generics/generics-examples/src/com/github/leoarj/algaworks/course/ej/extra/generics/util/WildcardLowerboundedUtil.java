@@ -30,7 +30,7 @@ public class WildcardLowerboundedUtil {
          * sendo assim uma Creature ou algum supertipo (herda a hierarquia).
          *
          * Nesse caso, com uso de super, deixamos a estrutura de dados mais abrangente,
-         * já que ela pode receber instâncias de diferentes subclasses (relaxamos a restrição de tipos).
+         * já que ela pode receber instâncias de diferentes subclasses (ampliamos a restrição de tipos).
          */
         // Garantia: Tipo é sempre uma Creature e herda sua hierarquia.
         //creatures.add(new Creature("Bird"));
