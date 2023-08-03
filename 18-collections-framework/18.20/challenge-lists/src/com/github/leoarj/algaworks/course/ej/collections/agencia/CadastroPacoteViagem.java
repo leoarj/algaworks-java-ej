@@ -42,7 +42,7 @@ public class CadastroPacoteViagem {
     public void ordenarPorPrecoDecrescente() {
         // DONE ordenar pacotes pelo preço (decrescente)
         System.out.println("Ordenando lista por ordem decrescente/reversa...\n");
-        Collections.sort(pacotesViagem, Comparator.reverseOrder());
+        Collections.sort(pacotesViagem, new PacoteViagemPrecoComparator().reversed());
     }
 
     public void removerPorDescricao(String descricao) throws PacoteViagemNaoEncontradoException {
