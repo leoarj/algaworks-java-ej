@@ -48,22 +48,15 @@ public class PacoteViagem implements Comparable<PacoteViagem> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         PacoteViagem that = (PacoteViagem) o;
-
-        if (Double.compare(that.precoPorPessoa, precoPorPessoa) != 0) return false;
-        return Objects.equals(descricao, that.descricao);
+        return Double.compare(that.precoPorPessoa, precoPorPessoa) == 0 && Objects.equals(descricao, that.descricao);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = descricao != null ? descricao.hashCode() : 0;
-        temp = Double.doubleToLongBits(precoPorPessoa);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
+        return Objects.hash(descricao, precoPorPessoa);
     }
+
 
     // DONE implementar compareTo
 
