@@ -1,6 +1,6 @@
 import com.github.leoarj.algaworks.course.ej.collections.iterables.MegaSenaSorteador;
 
-import java.util.SortedSet;
+import java.util.Collection;
 
 public class MegaSenaSorteadorTest {
 
@@ -8,7 +8,7 @@ public class MegaSenaSorteadorTest {
         MegaSenaSorteador megaSenaSorteador = new MegaSenaSorteador(10);
 
         // Forma mais curta para realizar a iteração.
-        for (SortedSet<Integer> jogo : megaSenaSorteador) {
+        for (Collection<Integer> jogo : megaSenaSorteador) {
             System.out.println(jogo);
         }
 

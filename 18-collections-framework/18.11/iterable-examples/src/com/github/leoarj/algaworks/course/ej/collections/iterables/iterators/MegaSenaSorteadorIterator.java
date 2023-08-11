@@ -7,7 +7,7 @@ import java.util.*;
 * e principalmente encapsular a lógica de iteração e retorno de elementos.
 */
 
-public class MegaSenaSorteadorIterator implements Iterator<SortedSet<Integer>> {
+public class MegaSenaSorteadorIterator implements Iterator<Collection<Integer>> {
 
     private static final int NUMERO_INICIAL = 1;
     private static final int NUMERO_FINAL = 60;
@@ -31,7 +31,7 @@ public class MegaSenaSorteadorIterator implements Iterator<SortedSet<Integer>> {
     }
 
     @Override
-    public SortedSet<Integer> next() {
+    public Collection<Integer> next() {
         if (!hasNext()) {
             throw new NoSuchElementException("Todos os números já foram sorteados");
         }
