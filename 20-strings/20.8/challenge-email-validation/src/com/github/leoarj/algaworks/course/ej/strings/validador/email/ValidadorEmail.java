@@ -7,37 +7,25 @@ public class ValidadorEmail {
     }
 
     private static boolean validarNomeUsuario(String email) {
-        boolean isValido = false;
         String nomeUsuario = obterNomeUsuario(email);
-
-        isValido = validarSeNaoVazio(nomeUsuario)
+        return validarSeNaoVazio(nomeUsuario)
                 && validarSeIniciaComCaractereOuDigito(nomeUsuario)
                 && validarCaracteres(nomeUsuario, false, false, '_', '-', '.');
-
-        return isValido;
     }
 
     private static boolean validarDominio(String email) {
-        boolean isValido = false;
         String dominio = obterDominio(email);
-
-        isValido = validarSeNaoVazio(dominio)
+        return validarSeNaoVazio(dominio)
                 && validarSeIniciaComCaractereOuDigito(dominio)
                 && validarCaracteres(dominio, false, true, '-', '.');
-
-        return isValido;
     }
 
     private static boolean validarSuxfixoDominio(String email) {
-        boolean isValido = false;
         String sufixoDominio = obterSufixoDominio(email);
-
-        isValido = validarSeNaoVazio(sufixoDominio)
+        return validarSeNaoVazio(sufixoDominio)
                 && validarQuantidadeCaracteres(sufixoDominio, 2, 3)
                 && validarSeIniciaComCaractereOuDigito(sufixoDominio)
                 && validarCaracteres(sufixoDominio, true, true);
-
-        return isValido;
     }
 
     private static boolean validarSeNaoVazio(String email) {
@@ -48,26 +36,26 @@ public class ValidadorEmail {
         return (Character.isLetter(caractere)) || (Character.isDigit(caractere));
     }
 
-    private static boolean validarSeCaracterSomenteLetra(char caractere) {
+    private static boolean validarSeCaracterLetra(char caractere) {
         return (Character.isLetter(caractere));
     }
 
-    private static boolean validarSeCaracterAceito(char caractere, char... caracteresAceitos) {
-        boolean isCaracterAceito = false;
+    private static boolean validarSeCaractereDigito(char caractere) {
+        return (Character.isDigit(caractere));
+    }
 
+    private static boolean validarSeCaracterAceito(char caractere, char... caracteresAceitos) {
         for (char caractereAceito : caracteresAceitos) {
             if (caractere == caractereAceito) {
-                isCaracterAceito = true;
-                break;
+                return true;
             }
         }
 
-        return isCaracterAceito;
+        return false;
     }
 
     private static boolean validarSeIniciaComCaractereOuDigito(String email) {
-        char caracterInicio = email.charAt(0);
-        return Character.isLetter(caracterInicio) || (Character.isDigit(caracterInicio));
+        return validarSeCaracterLetraOuDigito(email.charAt(0));
     }
 
     private static boolean validarSeCaractereMinusculo(char caractere) {
@@ -75,35 +63,37 @@ public class ValidadorEmail {
     }
 
     private static boolean validarCaracteres(String email, boolean validarSeApenasLetras, boolean validarSeApenasCaracteresMinusculos, char... caracteresAceitos) {
-        boolean isCaracteresValidos = true;
+//        boolean isCaracteresValidos = true;
 
         //for (char c : email.toCharArray())
         for (int i = 0; i < email.length(); i++) {
             char c = email.charAt(i);
 
-            if (validarSeApenasLetras && !validarSeCaracterSomenteLetra(c)) {
-                isCaracteresValidos = false;
-                break;
+            if (validarSeApenasLetras && !validarSeCaracterLetra(c)) {
+                return false;
             }
 
-            if (validarSeApenasCaracteresMinusculos && validarSeCaracterSomenteLetra(c)) {
+            if (validarSeApenasCaracteresMinusculos && validarSeCaracterLetra(c)) {
                 if (!validarSeCaractereMinusculo(c)) {
-                    isCaracteresValidos = false;
-                    break;
+                    return false;
                 }
             }
 
-            if (!validarSeCaracterLetraOuDigito(c)) {
-                if (caracteresAceitos.length > 0) {
-                    if (!validarSeCaracterAceito(c, caracteresAceitos)) {
-                        isCaracteresValidos = false;
-                        break;
-                    }
-                }
+            if (!validarSeCaracterLetraOuDigito(c) && !validarSeCaracterAceito(c, caracteresAceitos)) {
+                return false;
             }
+
+            // Outra opção:
+//            isCaracteresValidos = (validarSeCaracterLetra(c) && (!validarSeApenasCaracteresMinusculos || validarSeCaractereMinusculo(c)))
+//                    || (!validarSeApenasLetras && (validarSeCaractereDigito(c) || validarSeCaracterAceito(c, caracteresAceitos)));
+//
+//            if (!isCaracteresValidos) {
+//                break;
+//            }
         }
 
-        return isCaracteresValidos;
+//        return isCaracteresValidos;
+        return true;
     }
 
     private static boolean validarQuantidadeCaracteres(String valor, int quantidadeMinima, int quantidadeMaxima) {
@@ -112,7 +102,6 @@ public class ValidadorEmail {
 
     private static String obterNomeUsuario(String email) {
         int indexArroba = email.indexOf('@');
-
         return (indexArroba < 0 ? "" : email.substring(0, indexArroba));
     }
 
