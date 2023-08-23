@@ -1,4 +1,5 @@
 import com.github.leoarj.algaworks.course.ej.strings.validador.email.ValidadorEmail;
+import com.github.leoarj.algaworks.course.ej.strings.validador.email.ValidadorEmailRegex;
 
 public class Principal {
 
@@ -20,14 +21,16 @@ public class Principal {
         };
 
         for (String email : emailsValidos) {
-            if (!ValidadorEmail.validar(email)) {
+            //if (!ValidadorEmail.validar(email)) {
+            if (!ValidadorEmailRegex.validar(email)) {
                 throw new RuntimeException(
                         String.format("E-mail %s é válido, mas validador retornou false", email));
             }
         }
 
         for (String email : emailsInvalidos) {
-            if (ValidadorEmail.validar(email)) {
+            //if (ValidadorEmail.validar(email)) {
+            if (ValidadorEmailRegex.validar(email)) {
                 throw new RuntimeException(
                         String.format("E-mail %s é inválido, mas validador retornou true", email));
             }
