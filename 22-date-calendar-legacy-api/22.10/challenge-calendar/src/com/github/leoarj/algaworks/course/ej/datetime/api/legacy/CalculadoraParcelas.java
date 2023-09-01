@@ -1,3 +1,5 @@
+package com.github.leoarj.algaworks.course.ej.datetime.api.legacy;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
