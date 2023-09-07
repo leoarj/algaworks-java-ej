@@ -6,15 +6,13 @@ import java.util.NoSuchElementException;
 
 public class CalculadoraParcelasIterator implements Iterator<ParcelaCalculada> {
 
+    private final LocalDate dataPrimeiraParcela;
     private final int quantidadeParcelas;
-    private final int diaPrimeiraParcela;
-    private LocalDate dataParcelaAtual;
     private int quantidadeParcelasCalculadas;
 
     public CalculadoraParcelasIterator(final LocalDate dataPrimeiraParcela, final int quantidadeParcelas) {
-        this.dataParcelaAtual = dataPrimeiraParcela;
+        this.dataPrimeiraParcela = dataPrimeiraParcela;
         this.quantidadeParcelas = quantidadeParcelas;
-        this.diaPrimeiraParcela = dataPrimeiraParcela.getDayOfMonth();
         this.quantidadeParcelasCalculadas = 0;
     }
 
@@ -26,22 +24,10 @@ public class CalculadoraParcelasIterator implements Iterator<ParcelaCalculada> {
     @Override
     public ParcelaCalculada next() {
         if (!hasNext()) {
-            throw new NoSuchElementException("Todas parcelas já foram calculadas");
+            throw new NoSuchElementException("Todas as parcelas já foram calculadas");
         }
 
-        if (quantidadeParcelasCalculadas == 0) {
-            return new ParcelaCalculada(dataParcelaAtual, ++quantidadeParcelasCalculadas);
-        }
-
-        LocalDate dataProximaParcela = dataParcelaAtual.plusMonths(1);
-        int diaMaximoProximaParcela = dataProximaParcela.lengthOfMonth();
-
-        dataProximaParcela = (diaPrimeiraParcela > diaMaximoProximaParcela ?
-                dataProximaParcela.withDayOfMonth(diaMaximoProximaParcela) :
-                dataProximaParcela.withDayOfMonth(diaPrimeiraParcela));
-
-        dataParcelaAtual = dataProximaParcela;
-
-        return new ParcelaCalculada(dataProximaParcela, ++quantidadeParcelasCalculadas);
+        return new ParcelaCalculada(
+                dataPrimeiraParcela.plusMonths(quantidadeParcelasCalculadas++), quantidadeParcelasCalculadas);
     }
 }

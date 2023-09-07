@@ -9,10 +9,14 @@ import java.util.Scanner;
 
 public class CalculadoraParcelasUtil {
 
-    public void calcular() {
-        try (Scanner scanner = new Scanner(System.in)) {
-            DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static void main(String[] args) {
+        CalculadoraParcelasUtil calculadoraParcelasUtil = new CalculadoraParcelasUtil();
+        calculadoraParcelasUtil.calcular("dd/MM/yyyy");
+    }
 
+    public void calcular(String formatoData) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            DateTimeFormatter formatador = DateTimeFormatter.ofPattern(formatoData);
             LocalDate dataPrimeiraParcela = solicitarPrimeiraParcela(scanner, formatador);
             int quantidadeParcelas = solicitarQuantidadeParcelas(scanner);
 
@@ -30,13 +34,10 @@ public class CalculadoraParcelasUtil {
     private LocalDate solicitarPrimeiraParcela(Scanner scanner, DateTimeFormatter formatador) {
         Objects.requireNonNull(scanner);
         Objects.requireNonNull(formatador);
-
         while (true) {
             try {
                 System.out.print("Data da primeira parcela: ");
-                String dataPrimeiraParcelaInput = scanner.nextLine();
-
-                return LocalDate.parse(dataPrimeiraParcelaInput, formatador);
+                return LocalDate.parse(scanner.nextLine(), formatador);
             } catch (DateTimeParseException e) {
                 System.out.println("Data inválida. Tente novamente.");
             }
@@ -45,11 +46,10 @@ public class CalculadoraParcelasUtil {
 
     private int solicitarQuantidadeParcelas(Scanner scanner) {
         Objects.requireNonNull(scanner);
-
         while (true) {
             try {
                 System.out.print("Quantidade de parcelas: ");
-                return scanner.nextInt();
+                return Integer.parseInt(scanner.nextLine());
             } catch (RuntimeException e) {
                 System.out.println("Houve um erro. Tente novamente.");
             }
