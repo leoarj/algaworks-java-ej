@@ -25,7 +25,7 @@ import java.util.Scanner;
 public class AgendaReuniao {
 
     // Pattern do formatador com base em: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html
-    private final static String DATA_REUNIAO_FORMATO_IMPRESSAO = "EEEE, d 'de' MMMM 'de' u";
+    private final static String DATA_REUNIAO_FORMATO_IMPRESSAO = "EEEE, d 'de' MMMM 'de' yyyy";
 
     public static void main(String[] args) {
         AgendaReuniao agendaReuniao = new AgendaReuniao();
@@ -39,10 +39,10 @@ public class AgendaReuniao {
             Month mesInicial = solicitarMesInicial(scanner);
             YearMonth anoMesReuniao = anoReuniao.atMonth(mesInicial);
 
-            DateTimeFormatter formatador = DateTimeFormatter
-                        .ofPattern(dataReuniaoFormatoImpressao)
-                        .withLocale(new Locale("pt", "BR"));
+            System.out.printf("Gerando agenda anual de reuniões desde %s%n",
+                    obterFormatadorComLocalePtBR("MMMM 'de' yyyy").format(anoMesReuniao));
 
+            DateTimeFormatter formatador = obterFormatadorComLocalePtBR(dataReuniaoFormatoImpressao);
             LocalDate dataReuniao = null;
             int mesesAdicionados = 0;
             do {
@@ -79,5 +79,11 @@ public class AgendaReuniao {
                 System.out.println("Mês inválido. Tente novamente.");
             }
         }
+    }
+
+    private DateTimeFormatter obterFormatadorComLocalePtBR(String pattern) {
+        return DateTimeFormatter
+                .ofPattern(pattern)
+                .withLocale(new Locale("pt", "BR"));
     }
 }
