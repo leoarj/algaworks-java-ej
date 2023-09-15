@@ -5,38 +5,38 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /*
-* A API de date-time do Java permite a identificação de fusos horários com ZoneId e ZoneOffset.
-*
-* - ZoneId = Abstração de uma identificação de zona de fuso horário.
-*
-* - ZoneRegion = Representa uma região de fuso horário,
-* por exemplo [America/Sao_Paulo].
-* Obs.: Possui visibilidade default package e instâncias são obtidas/resolvidas automaticamente
-* pelo método ZoneId.of().
-*
-* - ZoneOffset = Representa um deslocamento de tempo de uma região.
-* Por exemplo, pode variar conforme regras locais, como horário de verão.
-*
-* - ZonedDateTime = Objeto temporal de data/hora com informação do fuso horário.
-*
-* - OffsetDateTime/OffsetTime = Representam data e hora ou somente hora com deslocamento do UTC.
-* Obs.: Muito visto na integração de webservices, porque os serviços precisam saber o deslocamento
-* de tempo para processar corretamente as informações.
-*
-* Com a API é possível realizar:
-*
-* - Identificação de fusos.
-*
-* - Instanciação de objetos temporais a partir de fusos.
-*
-* - Cálculos/conversões de/para de objetos temporais com ZonedDateTime entre outras classes.
-*
-* - Outras diversas operações com objetos temporais, resolvendo situações complexas,
-* a fim de evitarmos reinventar a roda ou gerar bugs tentando implementar algoritmos complexos
-* que já existem e que foram testados.
-*
-* - É uma API bem extensa, mas consideravelmente melhor desenhada e segura que a API legada.
-*/
+ * A API de date-time do Java permite a identificação de fusos horários com ZoneId e ZoneOffset.
+ *
+ * - ZoneId = Abstração de uma identificação de zona de fuso horário.
+ *
+ * - ZoneRegion = Representa uma região de fuso horário,
+ * por exemplo [America/Sao_Paulo].
+ * Obs.: Possui visibilidade default package e instâncias são obtidas/resolvidas automaticamente
+ * pelo método ZoneId.of().
+ *
+ * - ZoneOffset = Representa um deslocamento de tempo de uma região.
+ * Por exemplo, pode variar conforme regras locais, como horário de verão.
+ *
+ * - ZonedDateTime = Objeto temporal de data/hora com informação do fuso horário.
+ *
+ * - OffsetDateTime/OffsetTime = Representam data e hora ou somente hora com deslocamento do UTC.
+ * Obs.: Muito visto na integração de webservices, porque os serviços precisam saber o deslocamento
+ * de tempo para processar corretamente as informações.
+ *
+ * Com a API é possível realizar:
+ *
+ * - Identificação de fusos.
+ *
+ * - Instanciação de objetos temporais a partir de fusos.
+ *
+ * - Cálculos/conversões de/para de objetos temporais com ZonedDateTime entre outras classes.
+ *
+ * - Outras diversas operações com objetos temporais, resolvendo situações complexas,
+ * a fim de evitarmos reinventar a roda ou gerar bugs tentando implementar algoritmos complexos
+ * que já existem e que foram testados.
+ *
+ * - É uma API bem extensa, mas consideravelmente melhor desenhada e segura que a API legada.
+ */
 
 public class ConviteFesta {
 
@@ -76,7 +76,6 @@ public class ConviteFesta {
         Objects.requireNonNull(timeZones);
         try {
             ZonedDateTime dataHorarioComTimeZoneLocal = dataHorarioLocal.atZone(ZoneId.systemDefault());
-
             Collection<ZonedDateTime> datasConvites = new ArrayList<>(timeZones.length);
 
             for (String timeZone : timeZones) {
