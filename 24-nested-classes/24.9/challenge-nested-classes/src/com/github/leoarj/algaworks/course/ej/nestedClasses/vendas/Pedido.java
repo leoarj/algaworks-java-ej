@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /*
-* Obs.: Código inicial fornecido em classes aninhadas e depois refatorado para utilizar classes aninhadas.
+* Obs.: Código inicial fornecido sem classes aninhadas e depois refatorado para utilizar classes aninhadas.
 *
 * Classes aninhadas (Nested classes).
 *
