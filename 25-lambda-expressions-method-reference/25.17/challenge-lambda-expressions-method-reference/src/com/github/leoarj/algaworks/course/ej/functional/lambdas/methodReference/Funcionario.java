@@ -1,3 +1,5 @@
+package com.github.leoarj.algaworks.course.ej.functional.lambdas.methodReference;
+
 import java.math.BigDecimal;
 
 public class Funcionario {
@@ -30,7 +32,7 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionario{" +
+        return "com.github.leoarj.algaworks.course.ej.functional.lambdas.methodReference.Funcionario{" +
                 "nome='" + nome + '\'' +
                 ", salario=" + salario +
                 ", ativo=" + ativo +

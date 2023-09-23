@@ -1,3 +1,5 @@
+package com.github.leoarj.algaworks.course.ej.functional.lambdas.methodReference;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -8,7 +10,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-public class Principal3 {
+public class Principal2 {
 
 	private static final DecimalFormatSymbols FORMAT_SYMBOLS_PT_BR = new DecimalFormatSymbols(new Locale("pt", "BR"));
 	private static final DecimalFormat FORMATADOR_VALOR = new DecimalFormat("¤ #,##0.00", FORMAT_SYMBOLS_PT_BR);
@@ -22,14 +24,21 @@ public class Principal3 {
 		funcionarios.add(new Funcionario("Manoel", new BigDecimal("13000"), true));
 		funcionarios.add(new Funcionario("Sebastião", new BigDecimal("12000"), false));
 
+		/*
+		 * 2ª resolução: Utilizar variáveis de interfaces funcionais atribuindo method reference.
+		 */
+
 		// DONE remover funcionários inativos
-		funcionarios.removeIf(Funcionario::isInativo);
+		Predicate<Funcionario> funcionarioPredicate = Funcionario::isInativo;
+		funcionarios.removeIf(funcionarioPredicate);
 
 		// DONE ordenar funcionários pelo valor do salário
-		funcionarios.sort(Comparator.comparing(Funcionario::getSalario));
+		Function<Funcionario, BigDecimal> funcionarioFunction = Funcionario::getSalario;
+		funcionarios.sort(Comparator.comparing(funcionarioFunction));
 
 		// DONE iterar e imprimir funcionários usando o método estático imprimir
-		funcionarios.forEach(Principal3::imprimir);
+		Consumer<Funcionario> funcionarioConsumer = Principal2::imprimir;
+		funcionarios.forEach(funcionarioConsumer);
 	}
 
 	private static void imprimir(Funcionario funcionario) {

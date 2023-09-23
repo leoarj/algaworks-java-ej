@@ -1,3 +1,5 @@
+package com.github.leoarj.algaworks.course.ej.functional.lambdas.methodReference;
+
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -21,6 +23,10 @@ public class Principal {
 		funcionarios.add(new Funcionario("Maria", new BigDecimal("5000"), true));
 		funcionarios.add(new Funcionario("Manoel", new BigDecimal("13000"), true));
 		funcionarios.add(new Funcionario("Sebastião", new BigDecimal("12000"), false));
+
+		/*
+		* 1ª resolução: Utilizar variáveis de interfaces funcionais atribuindo expressões lambda.
+		*/
 
 		// DONE remover funcionários inativos
 		Predicate<Funcionario> funcionarioPredicate = funcionario -> funcionario.isInativo();
