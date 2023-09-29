@@ -63,13 +63,13 @@ Existem classes de optional projetadas para tipos primitivos e são úteis quand
 ### - Não utilizar Optional em tudo:
 #### - atributos de classe (deixar null caso não inicializado)
 #### - paramêtros e construtores (traz complexidade no consumo dos argumentos)
-#### - coleções (adicionar diretamente o valor e não um optional dele)
+#### - coleções (adicionar diretamente o valor e não um optional dele, para não alocar mais objetos desnecessariamente)
 
 ### Onde e quando utilizar:
 #### - Ser utilizada no retorno de métodos, que podem ter ou não o valor.
 #### - Se método não retorna `Optional`, basta testar `null` mesmo, em vez de criar um optional apenas para chamar `isPresent()`.
 
-Optional são muito úteis, podem deve se atender que há um custo de utilizar e deve se contextualizar quando aplicar o seu uso.
+Optional são muito úteis, porém deve se atender que há um custo de utilizar e deve se contextualizar quando aplicar o seu uso.
 
 ------------
 
