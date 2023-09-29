@@ -23,6 +23,7 @@ public class Principal {
     private static String obterNomeCidadeResidenciaPropria(Cliente cliente) {
         Objects.requireNonNull(cliente);
 
+        // Modo imperativo
 //        Endereco endereco = cliente.getEndereco();
 //        Cidade cidade = null;
 //
@@ -34,12 +35,13 @@ public class Principal {
 //            return cidade.nome();
 //        }
 
+        // Modo fucional
         return cliente
                 .getEndereco()
                 .filter(Endereco::isResidenciaPropria)
-                .flatMap(Endereco::getCidade) // "Achata" um retorno de Optional (Endereco.getCidade() retorna um optional)
+                .flatMap(Endereco::getCidade) // "Achata" um retorno de Optional (Endereco.getCidade() retorna um optional).
                 //.flatMap(cidade -> Optional.ofNullable(cidade.nome()))
-                .map(Cidade::nome) // Porque Cidade.nome() não retorna um Optional
+                .map(Cidade::nome) // Porque Cidade.nome() não retorna um Optional (map() já retorna um Optional do tipo).
                 .orElseThrow(TipoDeResidenciaInvalidaException::new);
 //
 //        throw new TipoDeResidenciaInvalidaException();
