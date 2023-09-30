@@ -17,7 +17,7 @@ import java.util.function.*;
  *
  * Demais explicações sobre Predicate, Function, Consumer e Supplier estão na classe "LambdasExample".
  *
- * Mais informações no arquivo na raíz do projeto: functional-lambdas-expressions-method-reference.md
+ * Mais informações no arquivo na raíz do projeto: README.md
  */
 
 public class MethodReferenceExample {

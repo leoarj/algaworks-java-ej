@@ -36,7 +36,7 @@ public class Main {
         *
         * Obs.: Esse exercício não faz parte do curso.
         * Foi um estudo extra, com outros materiais para reforçar os tópicos de generics em Java.
-        * Mais informações no arquivo na raíz do projeto: generics.md
+        * Mais informações no arquivo na raíz do projeto: README.md
         */
 
         //InvarianceExample.getListOfDogs();

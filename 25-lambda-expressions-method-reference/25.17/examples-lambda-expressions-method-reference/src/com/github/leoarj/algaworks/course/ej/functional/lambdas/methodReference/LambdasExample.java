@@ -13,7 +13,7 @@ import java.util.function.Supplier;
  * e podem ser passadas como argumento para composição de funções/execução de algoritmos
  * de forma reaproveitável.
  *
- * Mais informações no arquivo na raíz do projeto: functional-lambdas-expressions-method-reference.md
+ * Mais informações no arquivo na raíz do projeto: README.md
  */
 
 public class LambdasExample {
