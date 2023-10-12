@@ -1,5 +1,9 @@
+import com.github.leoarj.algaworks.course.ej.optional.Cidade;
+import com.github.leoarj.algaworks.course.ej.optional.Cliente;
+import com.github.leoarj.algaworks.course.ej.optional.Endereco;
+import com.github.leoarj.algaworks.course.ej.optional.TipoDeResidenciaInvalidaException;
+
 import java.util.Objects;
-import java.util.Optional;
 
 public class Principal {
 
@@ -24,8 +28,8 @@ public class Principal {
         Objects.requireNonNull(cliente);
 
         // Modo imperativo
-//        Endereco endereco = cliente.getEndereco();
-//        Cidade cidade = null;
+//        com.github.leoarj.algaworks.course.ej.optional.Endereco endereco = cliente.getEndereco();
+//        com.github.leoarj.algaworks.course.ej.optional.Cidade cidade = null;
 //
 //        if (endereco != null && endereco.isResidenciaPropria()) {
 //            cidade = endereco.getCidade();
@@ -39,12 +43,12 @@ public class Principal {
         return cliente
                 .getEndereco()
                 .filter(Endereco::isResidenciaPropria)
-                .flatMap(Endereco::getCidade) // "Achata" um retorno de Optional (Endereco.getCidade() retorna um optional).
+                .flatMap(Endereco::getCidade) // "Achata" um retorno de Optional (com.github.leoarj.algaworks.course.ej.optional.Endereco.getCidade() retorna um optional).
                 //.flatMap(cidade -> Optional.ofNullable(cidade.nome()))
-                .map(Cidade::nome) // Porque Cidade.nome() não retorna um Optional (map() já retorna um Optional do tipo).
+                .map(Cidade::nome) // Porque com.github.leoarj.algaworks.course.ej.optional.Cidade.nome() não retorna um Optional (map() já retorna um Optional do tipo).
                 .orElseThrow(TipoDeResidenciaInvalidaException::new);
 //
-//        throw new TipoDeResidenciaInvalidaException();
+//        throw new com.github.leoarj.algaworks.course.ej.optional.TipoDeResidenciaInvalidaException();
     }
 
 }
