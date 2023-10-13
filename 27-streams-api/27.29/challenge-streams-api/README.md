@@ -270,10 +270,10 @@ Sendo assim, temos um Map com valores acumulados para cada chave.
 
 Alguns coletores agregados padrão:
 - `Collectors.counting()`
-> Realiza a contagem de ocorrências de elementos para cada chave. Realiza a contagem de ocorrências de elementos para cada chave.
+> Realiza a contagem de ocorrências de elementos para cada chave.
 
 - `Collectors.summingInt()`
-> Realiza a somatória de um valor inteiro fornecido por elemento e sendo acumulado por chave. Realiza a somatória de um valor inteiro fornecido por elemento e sendo acumulado por chave.
+> Realiza a somatória de um valor inteiro fornecido por elemento e sendo acumulado por chave.
 
 ## Mapas particionados
 
@@ -289,7 +289,7 @@ conforme um predicado de separação, onde os elementos são agrupados em uma Li
 ## Obtendo streams de outras fontes
 Métodos que podem ser utilizados para se obter streams a partir de outras fontes:
 - `Arrays.stream()`
-  -`Stream.iterate()` (infinite strean)
+-`Stream.iterate()` (infinite strean)
 - `Stream.of()`
 - `Stream.concat()`
 - `IntStream.range()`/`rangeClosed()`
