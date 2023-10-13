@@ -79,12 +79,12 @@ public class Principal8 {
         System.out.println(valorPorCliente);
     }
 
-    private static void incrementarValorVendasRealizadasPorCliente(Map<String, BigDecimal> mapa, Venda venda) {
-        BigDecimal valorVenda = venda.getValorTotal();
-        String nomeCliente = venda.getCliente().nome();
-
-        mapa.put(nomeCliente,
-                (mapa.containsKey(nomeCliente) ?
-                        mapa.get(nomeCliente).add(valorVenda) : valorVenda));
-    }
+//    private static void incrementarValorVendasRealizadasPorCliente(Map<String, BigDecimal> mapa, Venda venda) {
+//        BigDecimal valorVenda = venda.getValorTotal();
+//        String nomeCliente = venda.getCliente().nome();
+//
+//        mapa.put(nomeCliente,
+//                (mapa.containsKey(nomeCliente) ?
+//                        mapa.get(nomeCliente).add(valorVenda) : valorVenda));
+//    }
 }
