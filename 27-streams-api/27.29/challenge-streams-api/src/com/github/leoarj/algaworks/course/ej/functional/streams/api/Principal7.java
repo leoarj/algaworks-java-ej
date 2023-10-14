@@ -55,7 +55,7 @@ public class Principal7 {
                 .collect(Collectors.groupingBy(Cliente::nome, Collectors.counting()));
 
         /*
-         * Utilizando coletores customizados por lambdas functions:
+         * Utilizando coletores customizados por lambdas expressions:
          */
 //        Map<String, Long> vendasRealizadasPorCliente = vendas.stream()
 //                .filter(Venda::isFechada)
