@@ -8,6 +8,6 @@ java -XX:NativeMemoryTracking=summary Teste
 
 - jcmd <pid>
 
-- jcmd 2275 VM.native_memory summary
+- jcmd {PID} VM.native_memory summary
 
-- jcmd 2275 GC.heap_info
+- jcmd {PID} GC.heap_info

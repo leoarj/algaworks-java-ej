@@ -65,6 +65,5 @@ O uso de Generics é vasto na plataforme Java, principalmente no **Collections F
 **Obs.:** Coleções em Java são naturalmente **invariantes**.
 Arrays são naturalmente **co-variantes**.
 
-**Obs.:** Esse exercício não faz parte do curso.
-Foi um estudo extra, com base nos tópicos do curso e outros materiais para reforçar os tópicos de generics em Java.
+**Obs.:** Estudo extra, com base nos tópicos do curso e outros materiais para reforçar os tópicos de generics em Java.
 
