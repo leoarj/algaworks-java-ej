@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="crm-api:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/crm_api_jar</output-path>
+    <root id="archive" name="crm-api.jar">
+      <element id="module-output" name="crm-api" />
+    </root>
+  </artifact>
+</component>
