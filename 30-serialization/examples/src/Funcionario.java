@@ -1,3 +1,4 @@
+import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +13,30 @@ import java.time.LocalDate;
  * ele deve implementar a interface de marcação {@link Serializable}.
  */
 public class Funcionario implements Serializable {
+
+    /*
+    * Para controlar versão da estrutura da classe referente
+    * a compatibilidade de serialização/desserialização.
+    *
+    * Anotação @Serial do pacote java.io ajuda a verificar em tempo de compilação
+    * elementos que fazem parte da estrutura de serialização.
+    *
+    * Caso as versões de serialização entre o objeto serializado
+    * e a estrutura da classe atual sejam diferentes,
+    * então houve quebra de compatibilidade, com uma java.io.InvalidClassException sendo lançada.
+    *
+    * Boas práticas:
+    * - Configurar na IDE para lembrar de gerar o serialVersionUID
+    * caso a classe implemente Serializable.
+    * - Implementar Serializable em classes apenas que sejam necessárias,
+    * porque isso reduz a flexibilidade de alteração da classe.
+    *
+    * Obs.: O cálculo do valor do serialVersionUID se baseia na estrutura da classe
+    * (nome, interfaces que implementa, propriedades, métodos etc.).
+    */
+    @Serial
+    private static final long serialVersionUID = -5578834679700950299L;
+
 
     private String nome;
     private LocalDate dataNascimento;
