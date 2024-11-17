@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact name="crm-app:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/crm_app_jar</output-path>
+    <root id="root">
+      <element id="archive" name="crm-app.jar">
+        <element id="module-output" name="crm-app" />
+      </element>
+      <element id="library" level="project" name="crm-api" />
+      <element id="library" level="project" name="commons-lang3-3.17.0" />
+    </root>
+  </artifact>
+</component>
