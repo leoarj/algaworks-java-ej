@@ -15,7 +15,12 @@ public class Funcionario implements Serializable {
 
     private String nome;
     private LocalDate dataNascimento;
-    private BigDecimal salario;
+    /*
+    * Com a palavra chave "transient",
+    * uma propriedade por ser marcada para não ser serializada/desserializada.
+    * Útil para informações sensíveis, informações calculadas etc.
+    */
+    private transient BigDecimal salario;
 
     public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario) {
         this.nome = nome;
