@@ -2,13 +2,17 @@ package com.algaworks.crm.app;
 
 import com.algaworks.crm.api.CadastroCliente;
 import com.algaworks.crm.api.Cliente;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
+/**
+ * Teste utilizando classes empacotadas de outro projeto.
+ */
 public class Principal {
 
     public static void main(String[] args) {
-        var cadastroCliente = new CadastroCliente();
+        CadastroCliente cadastroCliente = new CadastroCliente();
         cadastroCliente.adicionar(new Cliente("João da Silva", 30));
         cadastroCliente.adicionar(new Cliente("Maria Conceição", 90));
         cadastroCliente.adicionar(new Cliente("Sebastião das Couves", 50));
@@ -18,7 +22,8 @@ public class Principal {
         List<Cliente> clientes = cadastroCliente.consultar(cliente -> cliente.getIdade() > 40);
 
         for (Cliente cliente : clientes) {
-            System.out.printf("%s - %d%n", cliente.getNome(), cliente.getIdade());
+            System.out.printf("%s - %d%n", StringUtils.abbreviate(
+                    cliente.getNome(), 15), cliente.getIdade());
         }
     }
 
