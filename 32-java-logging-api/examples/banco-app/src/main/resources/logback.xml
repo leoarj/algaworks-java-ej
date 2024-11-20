@@ -7,7 +7,19 @@
 <configuration>
     <appender name="saidaPadrao" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%date %level %logger - %msg%n</pattern>
+            <!--
+                Personaliza layout de mensagens, onde:
+                - %date{yyyy-MM-dd HH:mm:ss.SSS}
+                    - Formato de data com horário e millisegundos
+                - %highlight(%-5level)
+                    - %highlight() = função para colorir conforme o nível de log (biblioteca já implementa qual cor para cada)
+                    - %-5level = reserva 5 caracteres para o nível de log, completando à direita (para alinhamento)
+                - %cyan(%logger{15})
+                    - %cyan() = função para cor específica
+                    - %logger{15} = específica nome do logger com até 15 caracteres, abreviando o nome dos pacotes
+            -->
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %cyan(%logger{15}) - %msg%n</pattern>
+            <!-- <pattern>%date %level %logger - %msg%n</pattern> -->
         </encoder>
     </appender>
 
