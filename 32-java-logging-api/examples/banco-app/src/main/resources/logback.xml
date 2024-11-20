@@ -1,0 +1,21 @@
+<!--
+    Configuração de appender para a saída de logs do Logback.
+    Neste arquivo podem ser configuradas quais as saídas (console, arquivo etc.),
+    formato das mensagens, nível padrão de log a partir do root (pacote raíz),
+    personalização do nível de log para determinado pacote (logger).
+-->
+<configuration>
+    <appender name="saidaPadrao" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date %level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Personaliza o nível de log para logger das classes de determinado pacote -->
+    <logger name="com.algaworks.banco.negocio" level="TRACE" />
+
+    <!-- Nível padrão de log (a partir do pacote raíz) -->
+    <root level="INFO">
+        <appender-ref ref="saidaPadrao" />
+    </root>
+</configuration>
