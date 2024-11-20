@@ -2,7 +2,7 @@ import java.math.BigDecimal;
 import java.sql.*;
 import java.util.Scanner;
 
-public class Principal {
+public class Consulta {
 
     /**
      * JDBC (Java Database Connectivity)
