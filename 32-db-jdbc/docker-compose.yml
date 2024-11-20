@@ -1,0 +1,26 @@
+name: db-jdbc
+
+networks:
+  db-jdbc-network:
+    driver: bridge
+
+services:
+  db-jdbc-mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql-db-jdbc-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - db-jdbc-network
+    healthcheck:
+      test: ["CMD", "mysql", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}", "--execute", "SHOW DATABASES;"]
+      interval: 5s
+      retries: 3
+      start_period: 30s
+      timeout: 10s
+
+volumes:
+  mysql-db-jdbc-data:
