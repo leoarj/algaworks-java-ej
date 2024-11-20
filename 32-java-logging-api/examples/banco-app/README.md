@@ -1,4 +1,6 @@
-# Níveis de Logging da *JUL*
+#Java Logging API, Logback e SLF4J
+
+## Níveis de Logging da *JUL*
 - SEVERE (highest value)
 - WARNING
 - INFO
@@ -7,7 +9,7 @@
 - FINER
 - FINEST (lowest value)
 
-## `logging.properties`
+### `logging.properties`
 VM Options
 -Djava.util.logging.config.file=logging.properties
 
@@ -28,4 +30,8 @@ VM Options
 - ERROR
     >Informação crítica de erro
 
-    
+- Refs.:
+    - https://www.slf4j.org/docs.html
+    - https://logback.qos.ch/documentation.html
+
+### Configuração da sáida de logs `logback.xml`
