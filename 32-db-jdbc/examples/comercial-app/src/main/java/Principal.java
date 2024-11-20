@@ -1,5 +1,6 @@
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.Scanner;
 
 public class Principal {
 
@@ -16,6 +17,10 @@ public class Principal {
      * https://dev.mysql.com/downloads/connector/j/
      */
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Pesquisa por nome: ");
+        String nomePesquisa = scanner.nextLine();
+
         /*
         * Statement = Interface que representa uma declaração/comando,
         * para execução de comandos SQL, retornando um ResultSet.
@@ -30,7 +35,8 @@ public class Principal {
         try (Connection conexao = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/comercial", "root", "root123456");
              Statement comando = conexao.createStatement();
-             ResultSet resultado = comando.executeQuery("select * from venda")) {
+             ResultSet resultado = comando.executeQuery("select * from venda" +
+                     " where nome_cliente like '%" + nomePesquisa + "%'")) {
             while (resultado.next()) {
                 Long id = resultado.getLong("id");
                 String nomeCliente = resultado.getString("nome_cliente");
