@@ -30,7 +30,25 @@
         <encoder>
             <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{15} - %msg%n</pattern>
         </encoder>
+        <!-- Adiciona um filtro para que apenas o nível definido e acima dele sejam registrados nesse appender -->
+        <!-- https://app.algaworks.com/forum/topicos/89654/como-evitar-o-registro-de-logs-de-depuracao-em-um-arquivo-de-log-mantendo-os-na-saida-padrao-->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
     </appender>
+
+    <!-- Adiciona appender para arquivo, gerando um novo por política de tempo -->
+    <!-- https://app.algaworks.com/forum/topicos/88780/log-por-data -->
+    <appender name="arquivoRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>banco-app_%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{15} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
 
     <!-- Personaliza o nível de log para logger das classes de determinado pacote -->
     <logger name="com.algaworks.banco.negocio" level="TRACE" />
@@ -39,5 +57,6 @@
     <root level="INFO">
         <appender-ref ref="saidaPadrao" />
         <appender-ref ref="arquivo" />
+        <appender-ref ref="arquivoRolling" />
     </root>
 </configuration>
