@@ -43,9 +43,13 @@
         <file>banco-app-rolling.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- Adiciona suporte a compressão -->
-            <!-- https://logback.qos.ch/manual/appenders.html -->
-            <fileNamePattern>banco-app-rolling_%d{yyyy-MM-dd_HH:mm:ss}.log.zip</fileNamePattern>
+            <!-- https://logback.qos.ch/manual/appenders.html#TimeBasedRollingPolicy -->
+            <fileNamePattern>banco-app-rolling_%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+            <!-- Remoção de arquivos com mais de x dias (No caso 30). Se deixar zero, desativa a exclusão -->
             <maxHistory>30</maxHistory>
+            <!-- Configuração opcional, aplicada em conjunto com maxHistory
+            (exclui arquivos caso a capacidade de armazenamento seja atingida) -->
+            <!-- <totalSizeCap>3GB</totalSizeCap> -->
         </rollingPolicy>
         <encoder>
             <pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{15} - %msg%n</pattern>
