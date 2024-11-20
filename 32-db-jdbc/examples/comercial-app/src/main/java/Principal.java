@@ -32,11 +32,22 @@ public class Principal {
         * o que se faz necessário o uso de try-with-resources, porém ResultSet já é fechado
         * quando o Statement correspondente é fechado.
         */
+
+        /*
+        * PreparedStatement = Interface que representa uma instrução SQL pré-compilada.
+        * Tem benefícios como:
+        * - Não ter que concatenar valores dentro da instrução,
+        * pois permite a definição de parâmetros na instrução e expansão dos mesmos antes de executar.
+        * - É mais performática, porque mantém a query pronta para execução por múltiplas vezes.
+        * - Trata o problema de SQL Injection.
+        */
         try (Connection conexao = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/comercial", "root", "root123456");
-             Statement comando = conexao.createStatement();
-             ResultSet resultado = comando.executeQuery("select * from venda" +
-                     " where nome_cliente like '%" + nomePesquisa + "%'")) {
+             PreparedStatement comando = conexao.prepareStatement(
+                     "select * from venda where nome_cliente like ?")) {
+            comando.setString(1, "%" + nomePesquisa + "%");
+            ResultSet resultado = comando.executeQuery();
+
             while (resultado.next()) {
                 Long id = resultado.getLong("id");
                 String nomeCliente = resultado.getString("nome_cliente");
