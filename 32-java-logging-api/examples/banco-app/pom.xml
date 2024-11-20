@@ -15,19 +15,28 @@
     </properties>
 
     <dependencies>
-        <!-- Dependência para o SLF4J -->
+        <!--
+        Dependência para o SLF4J
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>2.0.13</version>
         </dependency>
 
-        <!-- Dependência do provider da API de Logging padrão do Java (JUL) para o SLF4J -->
+        Dependência do provider da API de Logging padrão do Java (JUL) para o SLF4J
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-jdk14</artifactId>
             <version>2.0.13</version>
         </dependency>
+        -->
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.7</version>
+        </dependency>
+
     </dependencies>
 
 </project>
