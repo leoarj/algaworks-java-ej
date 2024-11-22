@@ -9,6 +9,16 @@ import java.util.List;
 
 public class VendaRepositorio {
 
+    /*
+    * Adiciona o conceito de Injeção de Dependências,
+    * para inversão de controle referente à conexão.
+    */
+    private final Connection conexao;
+
+    public VendaRepositorio(Connection conexao) {
+        this.conexao = conexao;
+    }
+
     public Venda adicionar(Venda venda) {
         String dml = """
             insert into venda (
@@ -19,9 +29,7 @@ public class VendaRepositorio {
             values (?, ?, ?)
             """;
 
-        try (Connection conexao = DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456");
-             PreparedStatement comando = conexao.prepareStatement(dml, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement comando = conexao.prepareStatement(dml, Statement.RETURN_GENERATED_KEYS)) {
             comando.setString(1, venda.getNomeCliente());
             comando.setBigDecimal(2, venda.getValorTotal());
             comando.setDate(3, Date.valueOf(venda.getDataPagamento()));
@@ -42,9 +50,7 @@ public class VendaRepositorio {
 
     public List<Venda> consultar() {
         var vendas = new ArrayList<Venda>();
-        try (Connection conexao = DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456");
-             var comando = conexao.createStatement();
+        try (var comando = conexao.createStatement();
              var resultado = comando.executeQuery("select * from venda")) {
             while (resultado.next()) {
                 Long id = resultado.getLong("id");
