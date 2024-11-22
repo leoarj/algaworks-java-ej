@@ -1,4 +1,4 @@
-package com.algaworks.comercial;
+package com.algaworks.comercial.repositorio;
 
 public class PersistenciaException extends RuntimeException {
 
