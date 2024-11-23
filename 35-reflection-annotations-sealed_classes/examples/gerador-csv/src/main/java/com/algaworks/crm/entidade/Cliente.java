@@ -1,10 +1,14 @@
 package com.algaworks.crm.entidade;
 
+import com.algaworks.csv.Campo;
+
 import java.time.LocalDate;
 
 public class Cliente {
 
+    @Campo
     private final Long codigo;
+    @Campo
     private final String nome;
     private final LocalDate dataNascimento;
 

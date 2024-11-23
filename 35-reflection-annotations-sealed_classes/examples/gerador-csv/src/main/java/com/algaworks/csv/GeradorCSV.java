@@ -28,6 +28,8 @@ public class GeradorCSV {
 
         // Obtém o nome de cada propriedade (Field) e une em uma String, separda por delimitador
         System.out.println(Arrays.stream(propriedades)
+                // Verifica se anotação (@Campo) está presente
+                .filter(p -> p.isAnnotationPresent(Campo.class))
                 .map(Field::getName)
                 .collect(Collectors.joining(";")));
 
@@ -47,10 +49,13 @@ public class GeradorCSV {
 
         try {
             for (Field propriedade : propriedades) {
-                // Tornar o campo acessível para ler seu valor (visibilidade em tempo de execução).
-                propriedade.setAccessible(true);
-                Object resultado = propriedade.get(objeto);
-                valores.add(resultado == null ? "" : resultado.toString());
+                // Verifica se anotação (@Campo) está presente
+                if (propriedade.isAnnotationPresent(Campo.class)) {
+                    // Tornar o campo acessível para ler seu valor (visibilidade em tempo de execução).
+                    propriedade.setAccessible(true);
+                    Object resultado = propriedade.get(objeto);
+                    valores.add(resultado == null ? "" : resultado.toString());
+                }
             }
 
             System.out.println(String.join(";", valores));
