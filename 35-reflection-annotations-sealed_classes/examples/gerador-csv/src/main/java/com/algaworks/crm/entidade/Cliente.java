@@ -8,7 +8,7 @@ public class Cliente {
 
     @Campo
     private final Long codigo;
-    @Campo
+    @Campo(maiusculo = true)
     private final String nome;
     private final LocalDate dataNascimento;
 

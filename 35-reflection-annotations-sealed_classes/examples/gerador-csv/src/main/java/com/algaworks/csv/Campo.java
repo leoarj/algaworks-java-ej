@@ -13,4 +13,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Campo {
+
+    /**
+     * Exemplo de membro para ser processado via reflection.
+     */
+    public boolean maiusculo() default false;
+
 }

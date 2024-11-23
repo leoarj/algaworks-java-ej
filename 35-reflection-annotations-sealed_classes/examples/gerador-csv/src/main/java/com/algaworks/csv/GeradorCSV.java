@@ -51,10 +51,15 @@ public class GeradorCSV {
             for (Field propriedade : propriedades) {
                 // Verifica se anotação (@Campo) está presente
                 if (propriedade.isAnnotationPresent(Campo.class)) {
+                    // Recuperar instância de anotação presente no campo
+                    Campo anotacaoCampo = propriedade.getAnnotation(Campo.class);
+
                     // Tornar o campo acessível para ler seu valor (visibilidade em tempo de execução).
                     propriedade.setAccessible(true);
                     Object resultado = propriedade.get(objeto);
-                    valores.add(resultado == null ? "" : resultado.toString());
+                    String resultadoString = resultado == null ? "" : resultado.toString();
+                    // Verifica valor de propriedade definida na anotação
+                    valores.add(anotacaoCampo.maiusculo() ? resultadoString.toUpperCase() : resultadoString);
                 }
             }
 
