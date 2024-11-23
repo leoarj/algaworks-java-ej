@@ -7,6 +7,7 @@ import com.algaworks.comercial.repositorio.VendaRepositorio;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * Adiciona o conceito de fábrica de objetos (Factory).
@@ -17,12 +18,15 @@ public class MySQLRepositoryFactory implements RepositoryFactory {
 
     private final Connection conexao;
 
-    public MySQLRepositoryFactory() {
+    public MySQLRepositoryFactory(Properties properties) {
         try {
             this.conexao = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456");
+                    .getConnection(
+                            properties.getProperty("connection.url"),
+                            properties.getProperty("connection.user"),
+                            properties.getProperty("connection.password"));
         } catch (SQLException e) {
-            throw new PersistenciaException(e);
+            throw new PersistenciaException("Erro estabelecendo conexão", e);
         }
     }
 

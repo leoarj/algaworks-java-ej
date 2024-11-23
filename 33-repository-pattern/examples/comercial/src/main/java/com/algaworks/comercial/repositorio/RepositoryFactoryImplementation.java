@@ -5,5 +5,5 @@ package com.algaworks.comercial.repositorio;
  * É utilizado para obter uma instância de fábrica de repositório.
  */
 public enum RepositoryFactoryImplementation {
-    MYSQL, IN_MEMORY
+    MYSQL, MEMORY
 }

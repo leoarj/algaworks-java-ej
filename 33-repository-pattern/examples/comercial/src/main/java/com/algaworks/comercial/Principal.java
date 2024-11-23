@@ -15,7 +15,7 @@ public class Principal {
         /*
         * Centraliza controle da conexão.
         */
-        try (var repositoryFactory = RepositoryFactory.getInstance(RepositoryFactoryImplementation.MYSQL)) {
+        try (var repositoryFactory = RepositoryFactory.getInstance()) {
             var vendaRepositorio = repositoryFactory.createVendaRepositorio();
             var cadastroVendaServico = new CadastroVendaServico(vendaRepositorio);
             Venda vendaCadastrada = cadastroVendaServico.cadastrar("José da Silva",
