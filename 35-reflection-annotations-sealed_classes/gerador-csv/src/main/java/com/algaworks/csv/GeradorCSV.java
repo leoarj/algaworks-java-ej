@@ -2,18 +2,61 @@ package com.algaworks.csv;
 
 import com.algaworks.crm.entidade.Cliente;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+/**
+ * Refletion API (java.lang.reflect).
+ *
+ * Permite inspecionar e manipular membros e comportamentos de classes,
+ * onde podemos "enxergar" a cada parte da estrutura da classe acessíveis como objetos.
+ *
+ * Muito utilizada em bibliotecas e frameworks para deixar as operações dinâmicas.
+ *
+ * .class = retorna instância do tipo Class, que tem a estrutura da classe chamada,
+ * como propriedades e métodos.
+ */
 public class GeradorCSV {
 
-    public static <T> void imprimir(List<Cliente> objetos) {
-        System.out.println("codigo;nome;dataNascimento");
+    public static <T> void imprimir(Class<T> clazz, List<T> objetos) {
+        // Obtém um array das propriedades declaradas na estrutura da classe.
+        // Adicionado suporte para generics.
+        Field[] propriedades = clazz.getDeclaredFields();
+
+        // Obtém o nome de cada propriedade (Field) e une em uma String, separda por delimitador
+        System.out.println(Arrays.stream(propriedades)
+                .map(Field::getName)
+                .collect(Collectors.joining(";")));
+
         objetos.forEach(GeradorCSV::imprimir);
     }
 
-    private static void imprimir(Cliente cliente) {
-        System.out.printf("%d;%s;%s%n", cliente.getCodigo(),
-                cliente.getNome(), cliente.getDataNascimento());
+    /**
+     * Realiza a leitura dinâmicamente dos valores de uma instância do objeto passado.
+     * Precisa ser acesso aos Fieds da estrutura (da instância passada),
+     * e uma lista de String para adicionar os valores como String e juntá-los com um delimitador.
+     */
+    private static void imprimir(Object objeto) {
+        // Obtém um array das propriedades declaradas na estrutura da classe,
+        // porém de determinada instância (acesso a estado de um objeto).
+        Field[] propriedades = objeto.getClass().getDeclaredFields();
+        List<String> valores = new ArrayList<>();
+
+        try {
+            for (Field propriedade : propriedades) {
+                // Tornar o campo acessível para ler seu valor (visibilidade em tempo de execução).
+                propriedade.setAccessible(true);
+                Object resultado = propriedade.get(objeto);
+                valores.add(resultado == null ? "" : resultado.toString());
+            }
+
+            System.out.println(String.join(";", valores));
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
