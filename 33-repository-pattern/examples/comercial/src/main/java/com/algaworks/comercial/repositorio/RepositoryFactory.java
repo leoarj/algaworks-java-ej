@@ -1,5 +1,7 @@
 package com.algaworks.comercial.repositorio;
 
+import com.algaworks.comercial.repositorio.mysql.MySQLVendaRepositorio;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -23,7 +25,7 @@ public class RepositoryFactory implements AutoCloseable {
     }
 
     public VendaRepositorio createVendaRepositorio() {
-        return new VendaRepositorio(conexao);
+        return new MySQLVendaRepositorio(conexao);
     }
 
     @Override

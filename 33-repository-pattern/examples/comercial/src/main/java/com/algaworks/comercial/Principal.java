@@ -2,12 +2,9 @@ package com.algaworks.comercial;
 
 import com.algaworks.comercial.entidade.Venda;
 import com.algaworks.comercial.repositorio.RepositoryFactory;
-import com.algaworks.comercial.repositorio.VendaRepositorio;
 import com.algaworks.comercial.servico.CadastroVendaServico;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 

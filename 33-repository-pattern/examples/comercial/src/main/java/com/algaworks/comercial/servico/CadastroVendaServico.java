@@ -1,11 +1,9 @@
 package com.algaworks.comercial.servico;
 
-import com.algaworks.comercial.repositorio.PersistenciaException;
 import com.algaworks.comercial.entidade.Venda;
 import com.algaworks.comercial.repositorio.VendaRepositorio;
 
 import java.math.BigDecimal;
-import java.sql.*;
 import java.time.LocalDate;
 
 public class CadastroVendaServico {
