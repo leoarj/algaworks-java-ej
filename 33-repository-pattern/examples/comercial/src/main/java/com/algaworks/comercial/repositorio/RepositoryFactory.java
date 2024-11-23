@@ -1,5 +1,6 @@
 package com.algaworks.comercial.repositorio;
 
+import com.algaworks.comercial.repositorio.memory.MemoryVendaRepositorio;
 import com.algaworks.comercial.repositorio.mysql.MySQLVendaRepositorio;
 
 import java.sql.Connection;
@@ -13,27 +14,28 @@ import java.sql.SQLException;
  */
 public class RepositoryFactory implements AutoCloseable {
 
-    private final Connection conexao;
+//    private final Connection conexao;
 
     public RepositoryFactory() {
-        try {
-            this.conexao = DriverManager
-                    .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456");
-        } catch (SQLException e) {
-            throw new PersistenciaException(e);
-        }
+//        try {
+//            this.conexao = DriverManager
+//                    .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456");
+//        } catch (SQLException e) {
+//            throw new PersistenciaException(e);
+//        }
     }
 
     public VendaRepositorio createVendaRepositorio() {
-        return new MySQLVendaRepositorio(conexao);
+//        return new MySQLVendaRepositorio(conexao);
+        return new MemoryVendaRepositorio();
     }
 
     @Override
     public void close() {
-        try {
-            conexao.close();
-        } catch (SQLException e) {
-            throw new PersistenciaException(e);
-        }
+//        try {
+//            conexao.close();
+//        } catch (SQLException e) {
+//            throw new PersistenciaException(e);
+//        }
     }
 }
