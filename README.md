@@ -10,23 +10,23 @@ Repositório para registro de estudos e exercício da linguagem Java e plataform
 ![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)
 
 ## Índice*
-- [Sobre*](#sobre)
+- [Sobre](#sobre)
 - [Tópicos explorados](#tópicos-explorados)
 - [Autor](#autor)
 - [Agradecimentos](#agradecimentos)
 - [Licença](#licença)
 
 ## Sobre
-Reune diversos exemplos e desafios de código que realizar durante o treinamento EJ,onde foram abordados tópicos referentes aos fundamentos da linguagem Java, na sua versão SE *(Standard Edition)*.
+Reune diversos exemplos e desafios de código que realizei durante o treinamento EJ, onde foram abordados tópicos referentes aos fundamentos da linguagem Java, na sua versão SE *(Standard Edition)*, com seus principais pacotes e APIs.
 
 ### Objetivos
-O objetivo é deixar registrado para consultas futuras e caso seja útil, ajudar também outras pessoas que estejam estudando algum dos tópicos.
+O objetivo é deixar registrado para consultas futuras e caso seja útil, ajudar também outras pessoas que estejam estudando algo parecido.
 
 ### Observações
-- Listagem de tópicos está de acordo com os desafios que realizei, a listagem dentro do treinamento é muito maior e mais detalhada.
+- Listagem de tópicos está simplificada, de acordo com os desafios que realizei, a listagem dentro do treinamento é muito maior e mais detalhada.
 
-- Este curso é posterior ao Java FJOO *(Fundação Java e Orientação e objetos)*,
-lá também são explorados fundamentos de lógica e da linguagem Java.
+- Este curso é posterior ao Java FJOO *(Fundação Java e Orientação a Objetos)*,
+nesse meu outro repositório também são explorados fundamentos com a linguagem Java.
     - https://github.com/leoarj/algaworks-java-oo
 
 ## Tópicos explorados
@@ -59,7 +59,7 @@ lá também são explorados fundamentos de lógica e da linguagem Java.
 - JDBC
 - Repository Pattern
 - Reflection API, Anotações e Sealed Classes
-- outros tópicos presentos nos projetos
+- outros tópicos presentes nos projetos...
 
 ## Autor
 Leandro Araújo, desenvolvedor Java, com foco em backend.<br>
