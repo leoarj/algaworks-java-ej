@@ -2,6 +2,7 @@ package com.algaworks.comercial;
 
 import com.algaworks.comercial.entidade.Venda;
 import com.algaworks.comercial.repositorio.RepositoryFactory;
+import com.algaworks.comercial.repositorio.RepositoryFactoryImplementation;
 import com.algaworks.comercial.servico.CadastroVendaServico;
 
 import java.math.BigDecimal;
@@ -14,7 +15,7 @@ public class Principal {
         /*
         * Centraliza controle da conexão.
         */
-        try (var repositoryFactory = new RepositoryFactory()) {
+        try (var repositoryFactory = RepositoryFactory.getInstance(RepositoryFactoryImplementation.MYSQL)) {
             var vendaRepositorio = repositoryFactory.createVendaRepositorio();
             var cadastroVendaServico = new CadastroVendaServico(vendaRepositorio);
             Venda vendaCadastrada = cadastroVendaServico.cadastrar("José da Silva",

@@ -1,41 +1,26 @@
 package com.algaworks.comercial.repositorio;
 
-import com.algaworks.comercial.repositorio.memory.MemoryVendaRepositorio;
-import com.algaworks.comercial.repositorio.mysql.MySQLVendaRepositorio;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.algaworks.comercial.repositorio.memory.MemoryRepositoryFactory;
+import com.algaworks.comercial.repositorio.mysql.MySQLRepositoryFactory;
 
 /**
- * Adiciona o conceito de fábrica de objetos (Factory).
- * Implementando {@link AutoCloseable} para fechar recursos na destruição do objeto,
- * podendo utilizar uma instância dessa classe com try-with-resources.
+ * Exemplo do conceito de Abstract Factory.
  */
-public class RepositoryFactory implements AutoCloseable {
+public interface RepositoryFactory extends AutoCloseable {
 
-//    private final Connection conexao;
-
-    public RepositoryFactory() {
-//        try {
-//            this.conexao = DriverManager
-//                    .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456");
-//        } catch (SQLException e) {
-//            throw new PersistenciaException(e);
-//        }
+    /**
+     * @param implementation Tipo da implementação da fábrica de repositórios (MYSQL, Em-Memória).<br/>
+     * {@return Uma instância conforme implementação escolhida}
+     */
+    public static RepositoryFactory getInstance(RepositoryFactoryImplementation implementation) {
+        return switch (implementation) {
+            case MYSQL -> new MySQLRepositoryFactory();
+            case IN_MEMORY -> new MemoryRepositoryFactory();
+        };
     }
 
-    public VendaRepositorio createVendaRepositorio() {
-//        return new MySQLVendaRepositorio(conexao);
-        return new MemoryVendaRepositorio();
-    }
+    VendaRepositorio createVendaRepositorio();
 
     @Override
-    public void close() {
-//        try {
-//            conexao.close();
-//        } catch (SQLException e) {
-//            throw new PersistenciaException(e);
-//        }
-    }
+    void close();
 }
