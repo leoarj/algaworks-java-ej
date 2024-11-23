@@ -1,6 +1,7 @@
 package com.algaworks.comercial;
 
 import com.algaworks.comercial.entidade.Venda;
+import com.algaworks.comercial.repositorio.RepositoryFactory;
 import com.algaworks.comercial.repositorio.VendaRepositorio;
 import com.algaworks.comercial.servico.CadastroVendaServico;
 
@@ -16,9 +17,8 @@ public class Principal {
         /*
         * Centraliza controle da conexão.
         */
-        try (Connection conexao = DriverManager
-                .getConnection("jdbc:mysql://localhost:3306/comercial", "root", "root123456")) {
-            var vendaRepositorio = new VendaRepositorio(conexao);
+        try (var repositoryFactory = new RepositoryFactory()) {
+            var vendaRepositorio = repositoryFactory.createVendaRepositorio();
             var cadastroVendaServico = new CadastroVendaServico(vendaRepositorio);
             Venda vendaCadastrada = cadastroVendaServico.cadastrar("José da Silva",
                     new BigDecimal("12300.87"), LocalDate.parse("2023-04-19"));
